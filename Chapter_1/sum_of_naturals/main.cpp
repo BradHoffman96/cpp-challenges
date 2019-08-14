@@ -11,5 +11,10 @@ int main() {
   int limit;
   std::cin >> limit;
 
-  std::cout << limit << '\n';
+  for (int i = 1; i <= limit; i++) {
+    if (i % 3 == 0 || i % 5 == 0)
+      std::cout << i << '\n';
+  }
+
+  return 0;
 }
