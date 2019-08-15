@@ -5,8 +5,16 @@
 
 using namespace std;
 
+int gcd(int larger, int smaller) {
+  int remainder = larger % smaller;
+  if (remainder == 0) {
+    return smaller;
+  } else {
+    return gcd(smaller, remainder);
+  }
+}
+
 int main() {
-  
   cout << "This program will find the Greatest Common Divisor of 2 numbers.\n";
 
   cout << "Please enter the first number: ";
@@ -17,21 +25,18 @@ int main() {
   int number_two;
   cin >> number_two;
 
-  int smaller_num;
+  int smaller_num, larger_num;
   if (number_one <= number_two) {
     smaller_num = number_one;
+    larger_num = number_two;
   } else {
     smaller_num = number_two;
+    larger_num = number_one;
   }
 
-  int gcd = 1;
-  for (int i = 1; i <= smaller_num; i++) {
-    if (number_one % i == 0 && number_two % i == 0) {
-      gcd = i;
-    }
-  }
+  int result = gcd(larger_num, smaller_num);
 
-  cout << "GCD: " << gcd << endl;
+  cout << "GCD: " << result << endl;
 
   return 0;
 }
