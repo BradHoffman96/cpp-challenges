@@ -1,7 +1,8 @@
 #include <iostream>
+#include <cstdlib>
 
-// Write a program that, given two positive integers, will calculate and print the 
-// Greatest Common Divisor of the two.
+// Write a program that will, given two or more positive integers, calculate and print
+// The Least Common Multiple of them all.
 
 using namespace std;
 
@@ -12,6 +13,13 @@ int gcd(int larger, int smaller) {
   } else {
     return gcd(smaller, remainder);
   }
+}
+
+int lcm(int larger, int smaller, int gcd_result) {
+  int result = abs(larger) / gcd_result;
+  result *= smaller;
+
+  return result;
 }
 
 int main() {
@@ -34,9 +42,10 @@ int main() {
     larger_num = number_one;
   }
 
-  int result = gcd(larger_num, smaller_num);
+  int gcd_result = gcd(larger_num, smaller_num);
+  int lcm_result = lcm(larger_num, smaller_num, gcd_result);
 
-  cout << "GCD: " << result << endl;
+  cout << "LCM: " << lcm_result << endl;
 
   return 0;
 }
